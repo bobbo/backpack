@@ -14,10 +14,34 @@ npm install bpk-component-breakpoint --save-dev
 import React from 'react';
 import BpkBreakpoint, { BREAKPOINTS } from 'bpk-component-breakpoint';
 
+const activeStyle = {
+  padding: spacingBase,
+  backgroundColor: colorGreen500,
+};
+
+const inactiveStyle = {
+  padding: spacingBase,
+  backgroundColor: colorGray100,
+};
+
 export default () => (
-  <BpkBreakpoint query={BREAKPOINTS.MOBILE}>
-    {isActive => (isActive ? <span>Mobile viewport is active</span> : <span>Mobile viewport is inactive</span>)}
-  </BpkBreakpoint>
+  <div>
+    <BpkBreakpoint query={BREAKPOINTS.MOBILE}>
+      {isActive => <div style={isActive ? activeStyle : inactiveStyle}>{'MOBILE'}</div>}
+    </BpkBreakpoint>
+    <BpkBreakpoint query={BREAKPOINTS.TABLET}>
+      {isActive => <div style={isActive ? activeStyle : inactiveStyle}>{'TABLET'}</div>}
+    </BpkBreakpoint>
+    <BpkBreakpoint query={BREAKPOINTS.TABLET_ONLY}>
+      {isActive => <div style={isActive ? activeStyle : inactiveStyle}>{'TABLET ONLY'}</div>}
+    </BpkBreakpoint>
+    <BpkBreakpoint query={BREAKPOINTS.ABOVE_MOBILE}>
+      {isActive => <div style={isActive ? activeStyle : inactiveStyle}>{'ABOVE MOBILE'}</div>}
+    </BpkBreakpoint>
+    <BpkBreakpoint query={BREAKPOINTS.ABOVE_TABLET}>
+      {isActive => <div style={isActive ? activeStyle : inactiveStyle}>{'ABOVE TABLET'}</div>}
+    </BpkBreakpoint>
+  </div>
 );
 ```
 
